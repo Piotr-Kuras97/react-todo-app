@@ -41,23 +41,22 @@ function TaskList({todos, dispatch, sortAZ, sortPriority}){
                             return -1; 
                         } 
                         if (valueA > valueB) {
-                            return 1; // b powinno być przed a
+                            return 1; 
                           }
-                        return 0; // wartości są równe
+                        return 0;
                     }
                     if(sortPriority){
-                        const priorityOrder = ['high', 'medium', 'low']; // Definiuj kolejność priorytetów
+                        const priorityOrder = ['high', 'medium', 'low']; 
 
                         const priorityA = priorityOrder.indexOf(a.priority);
                         const priorityB = priorityOrder.indexOf(b.priority);
                       
-                        // Porównuj priorytety i zwracaj odpowiednie wartości dla sortowania
                         if (priorityA < priorityB) {
-                          return -1; // Przesuń 'a' w górę
+                          return -1;
                         } else if (priorityA > priorityB) {
-                          return 1; // Przesuń 'b' w górę
+                          return 1; 
                         } else {
-                          return 0; // Nie zmieniaj kolejności
+                          return 0;
                         }
                     }
                 })
