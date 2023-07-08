@@ -6,7 +6,7 @@ import { ACTIONS } from "../reducer/actions"
 function AddTask({dispatch}){
     const [createTask, setCreateTask] = useState(false)
     const [value, setValue] = useState("")
-    const [priority, setPriority] = useState('low')
+    const [priority, setPriority] = useState('')
     const [calendar, setCalendar] = useState("")
 
     function handleSubmit(e){
@@ -35,6 +35,7 @@ function AddTask({dispatch}){
                             <div className="addtask__select">
                                 <label htmlFor="priority">Choose priority: </label>
                                 <select name="priority" id="priority" onClick={e => setPriority(e.target.value)} required>
+                                    <option value=""></option>
                                     <option value="low">Low</option>
                                     <option value="medium">Medium</option>
                                     <option value="high">High</option>
@@ -43,7 +44,7 @@ function AddTask({dispatch}){
 
                             <div className="addtask__calendar">
                                 <label htmlFor="calendar">Until when: </label>
-                                <input type="date" value={calendar} onChange={e => setCalendar(e.target.value)} required/>
+                                <input type="datetime-local" value={calendar} onChange={e => setCalendar(e.target.value)} required/>
                             </div>
                             <button type="submit" className="addtask__submit">Create Task</button>
                         </form>

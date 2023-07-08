@@ -6,30 +6,31 @@ html{
 }
 
 body{
-    background-color: $bgc-color;
+    background: $bgc-color;
 }
 
 .todo{
     display: flex;
     flex-direction: column;
-    margin: $spacing;
+    margin: $spacing 40px;
     background-color: $app-container;
-    border: 4px solid #9BE8D8;
+    border: 4px solid #001C30;
     border-radius: 15px;
 
     @media (min-width: 781px){
-        width: 80%;
-        margin: $spacing auto;
+        width: 75%;
+        margin: $spacing auto 75px auto;
     }
 
     @media(min-width: 1024px){
-        width: 60%;
+        width: 55%;
     }
 
     &__title{
         text-align: center;
         font-size: 2.2rem;
         margin: $spacing 0;
+        font-family: $special-fontfamily;
 
         @media (min-width: 781px){
             font-size: 3rem;
@@ -38,5 +39,22 @@ body{
         @media (min-width: 1024px){
             font-size: 3.8rem;
         }
+    }
+}
+
+footer{
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    background-color:black;
+    color: white;
+    text-align: center;
+    line-height: 40px;
+    font-size: 1.3rem;
+
+    a{
+        color: blue
     }
 }

@@ -4,7 +4,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons"
 
 import { ACTIONS } from "../reducer/actions"
 
-function EditForm({handleFinishEdit, dispatch, todoId}) {
+function EditForm({handleFinishEdit, dispatch, todoId, oldValue}) {
     const [newValue, setNewValue] = useState("")
 
     const handleSubmitEdit = (e) => {
@@ -24,6 +24,8 @@ function EditForm({handleFinishEdit, dispatch, todoId}) {
                         <label htmlFor="task">Type new value: </label>
                         <input type="text" name="task" value={newValue} onChange={e => setNewValue(e.target.value)} required/>
                     </div>
+
+                    <div className="editform__oldvalue">Old value: <strong>{oldValue}</strong></div>
 
                     <button type="submit" className="editform__btn">Edit task</button>
                 </form>

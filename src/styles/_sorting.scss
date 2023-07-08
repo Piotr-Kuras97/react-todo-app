@@ -1,0 +1,47 @@
+@import 'variables';
+@import 'mixins';
+
+.sorting__container{
+    position: fixed;
+    top: 0;
+    background-color: #EEE2DE;
+    height: 40%;
+    right: -100%;
+    width: 300px;
+    transition: .5s;
+    border-left: 3px solid black;
+    border-bottom: 3px solid black;
+
+    &--active{
+        right: 0;
+    }
+
+    .sorting__icon{
+        position: fixed;
+        top: 3%;
+        right: 2%;
+        font-size: 2.5rem;
+        cursor: pointer;
+    }
+
+    .sorting__title{
+        @include formTitle
+    }
+
+    .sorting__options-container{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+        height: 70%;
+        justify-content: space-evenly;
+
+        .sorting__option{
+            font-size: 1.5rem;
+            cursor: pointer;
+
+            .sorting__option-icon{
+                font-size: 2rem;
+            }
+        }
+    }
+}

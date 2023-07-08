@@ -5,12 +5,12 @@
     position: relative;
     left: 50%;
     transform: translateX(-50%);
-    width: 65%;
+    width: 55%;
     font-size: 1.6rem;
     @include btn;
 
     @media (min-width: 1024px){
-        width: 50%;
+        width: 40%;
     }
 }
 
@@ -26,7 +26,6 @@
     background-color: #F5EFE7;
     border: 2px solid black;
     border-radius: 10px;
-    box-shadow: 0px 0px 5px 3px rgba(255, 255, 255, 0.5);
 
     @media (min-width: 781px){
         right: 20%;
@@ -45,13 +44,7 @@
     }
 
     .addtask__title{
-        text-align: center;
-        font-size: 1.3rem;
-        margin: $spacing 0;
-
-        @media (min-width: 781px){
-            font-size: 1.6rem;
-        }
+       @include formTitle
     }
 
     .addtask__input, .addtask__select, .addtask__calendar{
@@ -61,10 +54,11 @@
         transform: translateX(-20%);
         margin-top: 3%;
         font-size: 1.2rem;
+        font-weight: bold;
 
         input, select{
             padding: $spacing /4 2px;
-            border: 2px solid gray;;
+            border: 2px solid gray;
 
             &:focus{
                 border: 2px solid black;

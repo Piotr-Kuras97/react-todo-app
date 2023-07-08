@@ -9,6 +9,7 @@ import { reducer } from "../reducer/reducer";
 import AddTask from "./AddTask";
 import TaskList from "./TaskList";
 import CompletedTasks from "./CompletedTasks";
+import SortingOptions from "./SortingOptios";
 
 function Todo() {
 
@@ -16,17 +17,34 @@ function Todo() {
     activeTasks: [],
     completedTasks: [],
   })
+  const [sortAZ, setSortAZ] = useState(false)
+  const [sortPriority, setSortPriority] = useState(false)
+
+  const sortingAZ = () => {
+    setSortAZ(true)
+    setSortPriority(false)
+  }
+  const sortingNewest = () => {
+    setSortAZ(false)
+    setSortPriority(false)
+  }
+
+  const sortingPriority = () => {
+    setSortAZ(false)
+    setSortPriority(true)
+  }
 
   console.log(state)
 
   return (
+    <>
     <div className="todo">
       <h1 className="todo__title">Simple React Todo App</h1>
       <AddTask dispatch={dispatch}/>
       <div className="line"></div>
       <h3 className="tasklist__title"><FontAwesomeIcon icon={faListCheck} /> TaskList:</h3>
       <div className="tasklist__container">
-        <TaskList todos={state.activeTasks} dispatch={dispatch} />
+        <TaskList todos={state.activeTasks} dispatch={dispatch} sortAZ={sortAZ} sortPriority={sortPriority}/>
       </div>
 
       {state.completedTasks.length >= 1 ? <h3 className="completedtask__title"><FontAwesomeIcon icon={faCheckCircle} style={{color: 'green'}}/> Completed Tasks:</h3> : null}
@@ -35,7 +53,13 @@ function Todo() {
           <CompletedTasks todos={state.completedTasks}/>
         </ol>
       </div>
+
+      
     </div>
+   
+    <SortingOptions sortingAZ={sortingAZ} sortingNewest={sortingNewest} sortingPriority={sortingPriority}/>
+    <footer>Created by <a href="https://github.com/Piotr-Kuras97">Piotr Kuraś</a></footer>
+    </>
   );
 }
 

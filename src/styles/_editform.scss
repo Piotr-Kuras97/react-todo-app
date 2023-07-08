@@ -1,7 +1,6 @@
 @import 'variables';
 @import 'mixins';
 
-
 .editform{
     @include bgc_form;
 
@@ -12,8 +11,8 @@
         right: 10%;
         bottom: 30%;
         background-color: white;
-        box-shadow: 0px 0px 5px 3px rgba(255, 255, 255, 0.5);
         border: 2px solid gray;
+        z-index: 1;
 
         @media (min-width: 781px){
             left: 25%;
@@ -31,13 +30,7 @@
     }
 
     .editform__title{
-        text-align: center;
-        font-size: 1.3rem;
-        margin: $spacing 0;
-
-        @media (min-width: 781px){
-            font-size: 1.6rem;
-        }
+        @include formTitle
     }
 
     .editform__input{
@@ -46,6 +39,7 @@
         left: 50%;
         transform: translateX(-50%);
         margin-top: 3%;
+        font-weight: bold;
         font-size: 1.2rem;
 
         label{
@@ -65,6 +59,11 @@
                 outline: none;
             }
         }
+    }
+
+    .editform__oldvalue{
+        margin-top: 15px;
+        text-align: center;
     }
 
     .editform__btn{
