@@ -43,6 +43,8 @@ export function reducer(state, action){
                 ...state,
                 activeTasks: updatedTasks
             };
+        case ACTIONS.SET_STATE:
+            return action.payload;
         default:
             return state;
     }

@@ -6,8 +6,22 @@ html{
 }
 
 body{
-    background: $bgc-color;
+   background-image: url(../assets/bg.jpg);
+   background-size: cover;
+   background-repeat: repeat;
+   background-position: center;
 }
+
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: -1;
+ }
 
 .todo{
     display: flex;
@@ -15,7 +29,7 @@ body{
     margin: $spacing 40px;
     background-color: $app-container;
     border: 4px solid #001C30;
-    border-radius: 15px;
+    border-radius: 5px;
 
     @media (min-width: 781px){
         width: 75%;

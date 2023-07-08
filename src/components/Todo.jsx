@@ -10,6 +10,7 @@ import AddTask from "./AddTask";
 import TaskList from "./TaskList";
 import CompletedTasks from "./CompletedTasks";
 import SortingOptions from "./SortingOptios";
+import { ACTIONS } from "../reducer/actions";
 
 function Todo() {
 
@@ -35,7 +36,6 @@ function Todo() {
     setSortPriority(true)
   }
 
-
   return (
     <>
     <div className="todo">
@@ -55,7 +55,7 @@ function Todo() {
       </div>
     </div>
    
-    <SortingOptions sortingAZ={sortingAZ} sortingNewest={sortingNewest} sortingPriority={sortingPriority}/>
+    <SortingOptions sortingAZ={sortingAZ} sortingNewest={sortingNewest} sortingPriority={sortingPriority} state={state} dispatch={dispatch}/>
     <footer>Created by <a href="https://github.com/Piotr-Kuras97">Piotr Kuraś</a></footer>
     </>
   );
