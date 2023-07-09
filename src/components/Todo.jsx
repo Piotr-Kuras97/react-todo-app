@@ -2,7 +2,7 @@ import React, { useReducer, useState } from "react";
 import '../styles/main.scss'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faListCheck, faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import { faListCheck, faCheckCircle, faFile } from "@fortawesome/free-solid-svg-icons";
 
 import { reducer } from "../reducer/reducer";
 
@@ -39,7 +39,7 @@ function Todo() {
   return (
     <>
     <div className="todo">
-      <h1 className="todo__title">Simple React Todo App</h1>
+      <h1 className="todo__title"><FontAwesomeIcon icon={faFile} /> Simple React Todo App</h1>
       <AddTask dispatch={dispatch}/>
       <div className="line"></div>
       <h3 className="tasklist__title"><FontAwesomeIcon icon={faListCheck} /> List of your tasks:</h3>

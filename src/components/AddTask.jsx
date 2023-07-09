@@ -1,6 +1,6 @@
 import React, { useState } from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faXmark } from "@fortawesome/free-solid-svg-icons"
+import { faXmark, faStar } from "@fortawesome/free-solid-svg-icons"
 import { ACTIONS } from "../reducer/actions"
 
 function AddTask({dispatch}){
@@ -9,12 +9,19 @@ function AddTask({dispatch}){
     const [priority, setPriority] = useState('')
     const [calendar, setCalendar] = useState("")
 
+    const [added, setAdded] = useState(false)
+
     function handleSubmit(e){
         e.preventDefault()
         dispatch({type: ACTIONS.ADD_TODO, payload: {value: value, priority: priority, calendar: calendar}})
         setValue("")
         setCreateTask(false)
         setCalendar("")
+        setAdded(true)
+
+        setTimeout(() => {
+            setAdded(false)
+        }, 3000)
     }
 
     return(
@@ -34,11 +41,11 @@ function AddTask({dispatch}){
 
                             <div className="addtask__select">
                                 <label htmlFor="priority">Choose priority: </label>
-                                <select name="priority" id="priority" onClick={e => setPriority(e.target.value)} required>
+                                <select style={{color: 'gold'}} name="priority" id="priority" onClick={e => setPriority(e.target.value)} required>
                                     <option value=""></option>
-                                    <option value="low">Low</option>
-                                    <option value="medium">Medium</option>
-                                    <option value="high">High</option>
+                                    <option value="low">&#9733;</option>
+                                    <option value="medium">&#9733;&#9733;</option>
+                                    <option value="high">&#9733;&#9733;&#9733;</option>
                                 </select>
                             </div>
 
@@ -51,6 +58,9 @@ function AddTask({dispatch}){
                     </div>
                 </div> 
             : null}
+
+            {added ?<div className="addtask__confirm">Task added successfully</div>: null}
+            
 
         </>
     )

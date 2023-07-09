@@ -1,13 +1,16 @@
 import { ACTIONS } from "../reducer/actions"
 import EditForm from "./EditForm"
+import DeleteTask from "./DeleteTask"
 import React, {useState} from "react"
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import { faCircle, faTrash, faCheck, faPenToSquare } from "@fortawesome/free-solid-svg-icons"
+import { faCircle, faTrash, faCheck, faPenToSquare, faStar } from "@fortawesome/free-solid-svg-icons"
 
 function TaskList({todos, dispatch, sortAZ, sortPriority}){
     const [edit, setEdit] = useState(false)
     const [editTaskId, setEditTaskId] = useState(null);
+    const [deleteTask, setDeleteTask] = useState(false)
+    const [deleteTaskId, setDeleteTaskId] = useState(null)
 
     const handleStartEdit = (taskId) => {
       setEdit(true)
@@ -18,14 +21,18 @@ function TaskList({todos, dispatch, sortAZ, sortPriority}){
       setEdit(false)
     }
 
-    const handleDelete = (todoId) => {
-        dispatch({type: ACTIONS.DELETE_TODO, payload: {id: todoId}})
+    const handleStartDelete = (taskId) => {
+        setDeleteTask(true)
+        setDeleteTaskId(taskId)
+    }
+
+    const handleCancelDelete = () => {
+        setDeleteTask(false)
     }
 
     const handleComplete = (todoId) => {
         dispatch({type: ACTIONS.COMPLETE_TODO, payload: {id: todoId}})
     }
-
 
     return(
         <>
@@ -64,8 +71,17 @@ function TaskList({todos, dispatch, sortAZ, sortPriority}){
                     return (<div key={todo.id} className="tasklist__task">
                         <FontAwesomeIcon icon={faCircle} className="tasklist__circle"/> 
                         <strong> {todo.value.toUpperCase()} </strong> 
-                        - Your task has priority: <strong>{todo.priority} </strong> 
-                        - Complete your task by: <strong>{todo.calendar}</strong>  
+                        - Your task has priority: 
+                        {
+                            todo.priority === 'low' && <span className="tasklist__priority"><FontAwesomeIcon icon={faStar} /></span>
+                        }
+                        {
+                        todo.priority === 'medium' && <span className="tasklist__priority"><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /></span>
+                        }
+                        {
+                        todo.priority === 'high' && <span className="tasklist__priority"><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /></span>
+                        }
+                        - Complete your task by: <strong>{todo.calendar.replace(/T/g, " ")}</strong>  
                         <div className="tasklist__icons">
                             <FontAwesomeIcon icon={faCheck} 
                                 className="tasklist__complete"
@@ -77,9 +93,10 @@ function TaskList({todos, dispatch, sortAZ, sortPriority}){
                             />
                             <FontAwesomeIcon 
                                 icon={faTrash} className="tasklist__delete"
-                                onClick={() => handleDelete(todo.id)}
+                                onClick={() => handleStartDelete(todo.id)}
                             />
                         </div>
+                        {deleteTaskId === todo.id && deleteTask ? <DeleteTask handleCancelDelete={handleCancelDelete} todoId={todo.id} dispatch={dispatch}/>: null}
                         {editTaskId === todo.id && edit ? <EditForm dispatch={dispatch} todoId={todo.id} oldValue={todo.value} handleFinishEdit={handleFinishEdit}/> : null}
                     </div>
                     )
@@ -90,3 +107,5 @@ function TaskList({todos, dispatch, sortAZ, sortPriority}){
 }
 
 export default TaskList
+
+// onClick={() => handleDelete(todo.id)}

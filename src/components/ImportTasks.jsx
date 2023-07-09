@@ -10,7 +10,7 @@ function ImportTasks({state, dispatch}) {
     
         const link = document.createElement("a");
         link.href = url;
-        link.download = "state.json"; 
+        link.download = "tasks.json"; 
     
         link.click();
     

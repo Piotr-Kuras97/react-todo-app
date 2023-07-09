@@ -23,6 +23,7 @@
     left: 10%;
     right: 10%;
     bottom: 20%;
+    min-height: 300px;
     background-color: #F5EFE7;
     border: 2px solid black;
     border-radius: 10px;
@@ -58,10 +59,12 @@
 
         input, select{
             padding: $spacing /4 2px;
-            border: 2px solid gray;
+            border: none;
+            border-bottom: 2px solid gray;
 
             &:focus{
-                border: 2px solid black;
+                border: none;
+                border-bottom: 2px solid rgb(101, 198, 230);
                 outline: none;
             }
         }
@@ -76,4 +79,33 @@
         @include btn;
     }
   }
+}
+
+.addtask__confirm{
+    position: fixed;
+    bottom: 60px;
+    background-color: lightgreen;
+    border-radius: 25px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    animation: addTaskAnimation 3s linear both;
+    border: 2px solid black;
+    font-weight: bold;
+}
+
+@keyframes addTaskAnimation{
+    0%{
+        right: -40%;
+    }
+    15%{
+        right: 40px;
+    }
+
+    85%{
+        right: 40px;
+    }
+
+    100%{
+        right: -40%;
+    }
 }
