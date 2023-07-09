@@ -1,3 +1,9 @@
+@import 'mixins';
+
+.toggle__title{
+    @include formTitle
+}
+
 .toggle {
     cursor: pointer;
     display: inline-block;

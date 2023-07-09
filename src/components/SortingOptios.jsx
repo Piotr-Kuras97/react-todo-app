@@ -10,7 +10,7 @@ function SortingOptions({sortingAZ, sortingNewest, sortingPriority, state, dispa
     const [menu, setMenu] = useState(false)
 
     return ( 
-        <div className={ menu ? `sorting__container sorting__container--active ${darkMode ? " darkmode" : null}` : "sorting__container"}>
+        <div className={ menu ? `sorting__container sorting__container--active ${darkMode ? " darkmode" : null}` : `sorting__container ${darkMode ? " darkmode" : null}`}>
             {menu ? <FontAwesomeIcon icon={faXmark} className="sorting__icon" onClick={() => setMenu(!menu)}/> : <FontAwesomeIcon icon={faBars} className="sorting__icon" onClick={() => setMenu(!menu)}/>}
             <h3 className="sorting__title">Set the sorting method</h3>
 
