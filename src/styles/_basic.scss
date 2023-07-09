@@ -66,6 +66,20 @@ body.darkmode::before{
         margin: $spacing 0;
         font-family: $special-fontfamily;
 
+        .todo__icon{
+            position: relative;
+            top: 7px;
+            height: 33px;
+
+            @media (min-width: 781px){
+               height: 38px;
+            }
+
+            @media (min-width: 781px){
+                height: 45px;
+             }
+        }
+
         @media (min-width: 781px){
             font-size: 3rem;
         }

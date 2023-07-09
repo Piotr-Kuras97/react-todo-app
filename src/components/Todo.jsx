@@ -3,6 +3,7 @@ import '../styles/main.scss'
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faListCheck, faCheckCircle, faFile } from "@fortawesome/free-solid-svg-icons";
+import taskIcon from '../assets/task-icon.png'
 
 import { reducer } from "../reducer/reducer";
 
@@ -53,7 +54,7 @@ function Todo() {
   return (
     <>
     <div className={darkMode ? "todo darkmode" : 'todo'}>
-      <h1 className="todo__title"><FontAwesomeIcon icon={faFile} /> React Todo App</h1>
+      <h1 className="todo__title"><img src={taskIcon} alt="task icon" className="todo__icon"/> React Todo App</h1>
       <AddTask dispatch={dispatch} darkMode={darkMode}/>
       <div className={darkMode ? "line darkmode" : 'line'}></div>
       <h3 className="tasklist__title"><FontAwesomeIcon icon={faListCheck} /> List of your tasks:</h3>
