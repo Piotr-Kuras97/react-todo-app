@@ -7,6 +7,10 @@
     border-top: 4px solid black;
     border-top-style: dashed;
 
+    &.darkmode{
+        border-color: white;
+    }
+
     @media (min-width: 581px){
         margin: 5% auto;
     }

@@ -15,6 +15,10 @@
         border: 2px solid gray;
         z-index: 1;
 
+        &.darkmode{
+            background-color: black;
+        }
+
         @media (min-width: 781px){
             left: 25%;
             right: 25%;
@@ -43,6 +47,16 @@
         font-weight: bold;
         font-size: 1.2rem;
 
+        &.darkmode{
+            input{
+                background-color: #001C30;
+                color: white;
+                &:focus{
+                    border-color: white;
+                }
+            }
+        }
+
         label{
             display: block;
             text-align: center;
@@ -51,12 +65,12 @@
         input{
             display: block;
             padding: $spacing /4 10px;
-            border: 2px solid gray;
+            border: 3px solid gray;
             width: 80%;
             margin: 10px auto;
 
             &:focus{
-                border: 2px solid black;
+                border: 3px solid black;
                 outline: none;
             }
         }

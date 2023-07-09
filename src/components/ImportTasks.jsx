@@ -2,7 +2,7 @@ import { ACTIONS } from "../reducer/actions";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDownload, faFileImport } from "@fortawesome/free-solid-svg-icons";
 
-function ImportTasks({state, dispatch}) {
+function ImportTasks({state, dispatch, darkMode}) {
     const handleButtonClick = () => {
         const jsonData = JSON.stringify(state); 
         const blob = new Blob([jsonData], { type: "application/json" }); 
@@ -33,7 +33,7 @@ function ImportTasks({state, dispatch}) {
         <div className="importtasks__container">
             <h4 className="importtasks__title">Download or import your tasks:</h4>
             <div className="importtasks__btn-container">
-                <button onClick={handleButtonClick}>Download tasks <FontAwesomeIcon icon={faDownload} className="importtasks__icon"/></button>
+                <button onClick={handleButtonClick} className={darkMode ? "darkmode" : null}>Download tasks <FontAwesomeIcon icon={faDownload} className="importtasks__icon"/></button>
             </div>
             <div className="importtasks__btn-container">
                 <label htmlFor="import">Import tasks <span> </span>

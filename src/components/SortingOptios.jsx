@@ -4,12 +4,13 @@ import ImportTasks from "./ImportTasks";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars, faXmark , faArrowUpAZ, faCalendarDay, faStar} from "@fortawesome/free-solid-svg-icons"; 
+import SwitchMode from "./SwitchMode";
 
-function SortingOptions({sortingAZ, sortingNewest, sortingPriority, state, dispatch}) {
+function SortingOptions({sortingAZ, sortingNewest, sortingPriority, state, dispatch, changeMode, darkMode}) {
     const [menu, setMenu] = useState(false)
 
     return ( 
-        <div className={ menu ? "sorting__container sorting__container--active" : "sorting__container"}>
+        <div className={ menu ? `sorting__container sorting__container--active ${darkMode ? " darkmode" : null}` : "sorting__container"}>
             {menu ? <FontAwesomeIcon icon={faXmark} className="sorting__icon" onClick={() => setMenu(!menu)}/> : <FontAwesomeIcon icon={faBars} className="sorting__icon" onClick={() => setMenu(!menu)}/>}
             <h3 className="sorting__title">Set the sorting method</h3>
 
@@ -30,7 +31,9 @@ function SortingOptions({sortingAZ, sortingNewest, sortingPriority, state, dispa
                 </div>
                 <hr />
                 
-                <ImportTasks state={state} dispatch={dispatch}/>
+                <ImportTasks state={state} dispatch={dispatch} darkMode={darkMode}/>
+
+                <SwitchMode changeMode={changeMode} />
             </div>
         </div>
      );

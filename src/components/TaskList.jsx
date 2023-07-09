@@ -6,7 +6,7 @@ import React, {useState} from "react"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faCircle, faTrash, faCheck, faPenToSquare, faStar } from "@fortawesome/free-solid-svg-icons"
 
-function TaskList({todos, dispatch, sortAZ, sortPriority}){
+function TaskList({todos, dispatch, sortAZ, sortPriority, darkMode}){
     const [edit, setEdit] = useState(false)
     const [editTaskId, setEditTaskId] = useState(null);
     const [deleteTask, setDeleteTask] = useState(false)
@@ -73,13 +73,13 @@ function TaskList({todos, dispatch, sortAZ, sortPriority}){
                         <strong> {todo.value.toUpperCase()} </strong> 
                         - Your task has priority: 
                         {
-                            todo.priority === 'low' && <span className="tasklist__priority"><FontAwesomeIcon icon={faStar} /></span>
+                            todo.priority === 'low' && <span className="tasklist__priority"> <FontAwesomeIcon icon={faStar} /> </span>
                         }
                         {
-                        todo.priority === 'medium' && <span className="tasklist__priority"><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /></span>
+                        todo.priority === 'medium' && <span className="tasklist__priority"> <FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /> </span>
                         }
                         {
-                        todo.priority === 'high' && <span className="tasklist__priority"><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /></span>
+                        todo.priority === 'high' && <span className="tasklist__priority"> <FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /><FontAwesomeIcon icon={faStar} /> </span>
                         }
                         - Complete your task by: <strong>{todo.calendar.replace(/T/g, " ")}</strong>  
                         <div className="tasklist__icons">
@@ -96,16 +96,14 @@ function TaskList({todos, dispatch, sortAZ, sortPriority}){
                                 onClick={() => handleStartDelete(todo.id)}
                             />
                         </div>
-                        {deleteTaskId === todo.id && deleteTask ? <DeleteTask handleCancelDelete={handleCancelDelete} todoId={todo.id} dispatch={dispatch}/>: null}
-                        {editTaskId === todo.id && edit ? <EditForm dispatch={dispatch} todoId={todo.id} oldValue={todo.value} handleFinishEdit={handleFinishEdit}/> : null}
+                        {deleteTaskId === todo.id && deleteTask ? <DeleteTask handleCancelDelete={handleCancelDelete} todoId={todo.id} dispatch={dispatch} darkMode={darkMode}/>: null}
+                        {editTaskId === todo.id && edit ? <EditForm dispatch={dispatch} todoId={todo.id} oldValue={todo.value} handleFinishEdit={handleFinishEdit} darkMode={darkMode}/> : null}
                     </div>
                     )
-            }) : <p>You currently have no active tasks, click <strong>'ADD TASK'</strong> to add a task</p>}
+            }) : <p>You currently have no active tasks, click <strong style={{textDecoration: 'underline'}}>'ADD TASK'</strong> to add a task</p>}
 
         </>
     )
 }
 
 export default TaskList
-
-// onClick={() => handleDelete(todo.id)}

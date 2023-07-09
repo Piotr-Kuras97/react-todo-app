@@ -4,7 +4,7 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons"
 
 import { ACTIONS } from "../reducer/actions"
 
-function EditForm({handleFinishEdit, dispatch, todoId, oldValue}) {
+function EditForm({handleFinishEdit, dispatch, todoId, oldValue, darkMode}) {
     const [newValue, setNewValue] = useState("")
 
     const handleSubmitEdit = (e) => {
@@ -15,12 +15,12 @@ function EditForm({handleFinishEdit, dispatch, todoId, oldValue}) {
 
     return ( 
         <div className="editform">
-            <div className="editform__form">
+            <div className={darkMode ? "editform__form darkmode" : "editform__form"}>
                 <h3 className="editform__title">Change the content of your task</h3>
                 <FontAwesomeIcon className="editform__xmark" icon={faXmark} onClick={handleFinishEdit}/>
 
                 <form onSubmit={handleSubmitEdit}>
-                    <div className="editform__input">
+                    <div className={darkMode ? "editform__input darkmode" : "editform__input"}>
                         <label htmlFor="task">Type new value: </label>
                         <input type="text" name="task" value={newValue} onChange={e => setNewValue(e.target.value)} required/>
                     </div>

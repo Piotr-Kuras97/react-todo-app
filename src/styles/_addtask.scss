@@ -28,6 +28,11 @@
     border: 2px solid black;
     border-radius: 10px;
 
+    &.darkmode{
+        background-color: #080202;
+        border-color: white;
+    }
+
     @media (min-width: 781px){
         right: 20%;
         left: 20%;
@@ -56,6 +61,13 @@
         margin-top: 3%;
         font-size: 1.2rem;
         font-weight: bold;
+
+        &.darkmode{
+            input, select{
+                background-color: #213555;
+                color: white;
+            }
+        }
 
         input, select{
             padding: $spacing /4 2px;

@@ -8,11 +8,19 @@
     height: calc(100% - 40px);
     right: -100%;
     width: 100%;
-    transition: .5s;
+    transition: right .5s;
+
+    &.darkmode{
+        background-color: black;
+    }
 
     @media (min-width: 581px){
         width: 300px;
         border-left: 3px solid black;
+
+        &.darkmode{
+            border-color: white;
+        }
     }
 
     &--active{
