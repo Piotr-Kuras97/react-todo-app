@@ -14,6 +14,10 @@ I used the following technologies to write the application:
 
 The demo is available at: https://piotr-kuras97.github.io/react-todo-app/
 
+## Updates:
+
+ * 11.07.2033 - LocalStorage added.
+
 ## Instalation:
 
 1. Clone Git repository https://github.com/Piotr-Kuras97/react-todo-app.git
