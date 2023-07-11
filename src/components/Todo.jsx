@@ -1,9 +1,9 @@
 import React, { useReducer, useState, useEffect } from "react";
-import '../styles/main.scss'
+import '../styles/main.scss';
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faListCheck, faCheckCircle, faFile } from "@fortawesome/free-solid-svg-icons";
-import taskIcon from '../assets/task-icon.png'
+import { faListCheck, faCheckCircle} from "@fortawesome/free-solid-svg-icons";
+import taskIcon from '../assets/task-icon.png';
 
 import { reducer } from "../reducer/reducer";
 
@@ -15,41 +15,46 @@ import SortingOptions from "./SortingOptios";
 function Todo() {
 
   const [state, dispatch] = useReducer(reducer, {
-    activeTasks: [],
-    completedTasks: [],
-  })
+    activeTasks: JSON.parse(localStorage.getItem("todos"))?.activeTasks || [],
+    completedTasks:
+      JSON.parse(localStorage.getItem("todos"))?.completedTasks || [],
+  });
 
-  const [sortAZ, setSortAZ] = useState(false)
-  const [sortPriority, setSortPriority] = useState(false)
+  const [sortAZ, setSortAZ] = useState(false);
+  const [sortPriority, setSortPriority] = useState(false);
 
-  const [darkMode, setDarkMode] = useState(false)
+  const [darkMode, setDarkMode] = useState(false);
 
   const sortingAZ = () => {
-    setSortAZ(true)
-    setSortPriority(false)
-  }
+    setSortAZ(true);
+    setSortPriority(false);
+  };
   const sortingNewest = () => {
-    setSortAZ(false)
-    setSortPriority(false)
-  }
+    setSortAZ(false);
+    setSortPriority(false);
+  };
 
   const sortingPriority = () => {
-    setSortAZ(false)
-    setSortPriority(true)
-  }
+    setSortAZ(false);
+    setSortPriority(true);
+  };
 
   const changeMode = () => {
-    setDarkMode(!darkMode)
-  }
+    setDarkMode(!darkMode);
+  };
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(state));
+  }, [state]);
 
   useEffect(() => {
     if(darkMode){
-      document.body.classList.add("darkmode")
+      document.body.classList.add("darkmode");
     }
     else {
-      document.body.classList.remove("darkmode")
+      document.body.classList.remove("darkmode");
     }
-  }, [darkMode])
+  }, [darkMode]);
 
   return (
     <>
@@ -74,6 +79,6 @@ function Todo() {
     <footer>Created by <a href="https://github.com/Piotr-Kuras97">Piotr Kuraś</a></footer>
     </>
   );
-}
+};
 
 export default Todo;
